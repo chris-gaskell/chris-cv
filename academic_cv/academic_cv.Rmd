@@ -1,0 +1,115 @@
+---
+name: Dr. Chris
+surname: Gaskell
+position: "Clinical Psychologist"
+profilepic: "img/resume.jpg"
+address: "University of Sheffield"
+# phone: +1 22 3333 4444
+www: chris-gaskell.com
+email: "chris@indigoneuro.co.uk"
+twitter: chrisgaskell92
+github: chris-gaskell
+linkedin: chris-gaskell
+aboutme: "I have recently qualified as a clinical psychologist. I specialise in neurological conditions."
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 414141
+output: 
+  vitae::awesomecv:
+    page_total: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(here)
+```
+
+```{r functions}
+readExcelSheets <- function(filename){
+  # read all sheets in .xlsx 
+  all <- readxl::excel_sheets(filename)
+  
+  # import each sheet into a list using readxl::read_excel
+  list <- lapply(all, function(x) readxl::read_excel(filename, sheet = x))
+  
+  # save sheet name for each sheet (list)
+  names(list) <- all
+  
+  # breaks up list and creates a dataframe for each sheet with df names matching sheet names
+  list2env(list, envir = .GlobalEnv)
+}
+```
+
+```{r load-data, message=F, results='hide'}
+filename <- here::here("academic_cv", "CG_data.xlsx")
+
+readExcelSheets(filename)
+```
+
+<!-- # Some stuff about me -->
+
+<!--  * I poisoned myself doing research. -->
+<!--  * I was the first woman to win a Nobel prize -->
+<!--  * I was the first person and only woman to win a Nobel prize in two different sciences. -->
+
+# Education
+
+```{r}
+education %>% 
+  detailed_entries(what = degree,
+                   when = year,
+                   with = institution,
+                   where = where,
+                   why = details)
+```
+
+# Clinical Role
+```{r}
+`clinical roles` %>% 
+  detailed_entries(what = role,
+                   when = dates,
+                   with = institution,
+                   where = where,
+                   why = details)
+```
+
+# Research
+```{r}
+research %>% 
+  detailed_entries(what = role,
+                   when = dates,
+                   with = institution,
+                   where = where,
+                   why = details)
+```
+
+# Teaching Experience
+```{r}
+teaching %>% 
+  detailed_entries(what = role,
+                   when = dates,
+                   with = institution,
+                   where = where,
+                   why = details)
+```
+
+\newpage
+
+<!-- # Skills -->
+<!-- ```{r} -->
+<!-- skills %>% -->
+<!--   brief_entries(when = skill) # , -->
+<!--                 # with = level) -->
+<!-- ```-->
+
+# Publications
+
+```{r}
+# library(dplyr)
+# knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+# 
+# bibliography_entries("packages.bib") %>%
+#   arrange(desc(author$family), issued)
+# 
+bibliography_entries(here("academic_cv", "my.papers.bib")) 
+```
