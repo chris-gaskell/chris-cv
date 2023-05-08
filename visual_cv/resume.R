@@ -3,7 +3,7 @@ VisualResume::VisualResume(
   titles.left = c("","Dr. Chris Gaskell, Clinical Psychologist, DClinPsy, BSc",  ""),
   titles.right = c("", "", ""),
   titles.left.cex = c(1,  4, 1),
-  timeline.labels = c("", "note. AP Assistant Psychologist"),
+  timeline.labels = c("", "note = AP Assistant Psychologist"),
   timeline = data.frame(title = c("KGV Colege", "University of Chester", "University of Sheffield",
                                   "AP", "AP", "AP",
                                   "AP", "AP", "Trainee Psychologist", "Clinical Psycholoigst",
@@ -28,12 +28,12 @@ VisualResume::VisualResume(
                       title = c("First peer-reviwed publication",
                                 "First publication as first author",
                                 "Co-developed and delivered teaching for DClinPsy Students")),
-  interests = list("Clients" = c(rep("Pediatrics", 4), "Families",
+  interests = list("Clients" = c(rep("Life Span", 4), "Families",
                            rep("Wider\nSystems", 3), rep("Young Adults", 1)), 
                    "Neuopsychology" = c(rep("Functional\n Symptoms", 1), 
                                     rep("Stroke", 2), rep("Brain\nInjury", 1), 
                                     rep("Capacity", 2)),
                    "Therapy" = c(rep("Interoception", 8), rep("Effectiveness", 2), 
-                                  rep("Reflective\nPractice", 6), rep("systemic\nWorking", 5))),
+                                  rep("Reflective\nPractice", 6), rep("Systemic\nWorking", 5))),
   year.steps = 1
 )
